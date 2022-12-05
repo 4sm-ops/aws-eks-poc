@@ -23,4 +23,8 @@ module "vpc" {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
     "kubernetes.io/role/internal-elb"             = 1
   }
+
+  enable_flow_log           = true
+  flow_log_destination_type = "s3"
+  flow_log_destination_arn  = module.s3_bucket.s3_bucket_arn
 }

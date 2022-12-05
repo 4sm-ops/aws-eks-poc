@@ -19,9 +19,11 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "node-group-1"
+      name = "node-group-private-1"
 
       instance_types = ["t3.small"]
+
+      subnet_ids = module.vpc.private_subnets
 
       min_size     = 1
       max_size     = 3
@@ -34,12 +36,18 @@ module "eks" {
       vpc_security_group_ids = [
         aws_security_group.node_group_one.id
       ]
+
+      labels = {
+      "type" = "private"
+      } 
     }
 
     two = {
-      name = "node-group-2"
+      name = "node-group-private-2"
 
       instance_types = ["t3.medium"]
+
+      subnet_ids = module.vpc.private_subnets
 
       min_size     = 1
       max_size     = 2
@@ -52,6 +60,10 @@ module "eks" {
       vpc_security_group_ids = [
         aws_security_group.node_group_two.id
       ]
+
+      labels = {
+      "type" = "private"
+      } 
     }
 
     two = {
@@ -72,6 +84,10 @@ module "eks" {
       vpc_security_group_ids = [
         aws_security_group.node_group_two.id
       ]
+
+      labels = {
+      "type" = "public"
+      } 
     }
   }
 }

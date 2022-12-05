@@ -41,10 +41,10 @@ a. Network Policies
 b. Security Groups
 
 ToDo: 
-a. Network Policies
+* Network Policies
 Implement Calico (open source policy engine). In addition to implementing the full set of Kubernetes network policy features, Calico supports extended network polices with a richer set of features, including support for layer 7 rules, e.g. HTTP, when integrated with Istio.
 
-b. Adjust Security Groups
+* Adjust Security Groups
 EKS uses AWS VPC Security Groups (SGs) to control the traffic between the Kubernetes control plane and the cluster's worker nodes. Security groups are also used to control the traffic between worker nodes, and other VPC resources, and external IP addresses. 
 
 
@@ -52,19 +52,14 @@ EKS uses AWS VPC Security Groups (SGs) to control the traffic between the Kubern
 
 On EKS, the audit logs are sent to Amazon Cloudwatch Logs. 
 ToDo: 
-a. Adjust the audit policy for EKS
+* Adjust the audit policy for EKS
 
 - Data Encryption and Secrets Management
 
 Kubernetes secrets are used to store sensitive information, such as user certificates, passwords, or API keys. They are persisted in etcd as base64 encoded strings.
 
 ToDo:
-a. Use AWS KMS for envelope encryption of Kubernetes secrets
-b. Audit the use of Kubernetes Secrets
-c. Use separate namespaces as a way to isolate secrets from different applications
-d. Use an external secrets provider¶
-
-
-
-
-
+* Use AWS KMS for envelope encryption of Kubernetes secrets
+* Audit the use of Kubernetes Secrets
+* Use separate namespaces as a way to isolate secrets from different applications
+* Use an external secrets provider¶
